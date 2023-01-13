@@ -36,6 +36,10 @@
     ]
   },
   "devDependencies": {
-    "prop-types": "^15.8.1"
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/material": "^5.11.4",
+    "prop-types": "^15.8.1",
+    "sass": "^1.57.1"
   }
 }
