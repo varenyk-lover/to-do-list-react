@@ -8,7 +8,6 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
     background: grey;
-    color: white;
     font-family: 'Poppins', sans-serif;
   }`
 
