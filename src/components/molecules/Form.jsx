@@ -20,8 +20,8 @@ Form.propTypes = {
     onChangeHandler: PropTypes.func.isRequired,
     placeholder: PropTypes.string.isRequired,
     input: PropTypes.string.isRequired,
-    onClick: PropTypes.func,
-    text: PropTypes.string,
+    onClick: PropTypes.func.isRequired,
+    text: PropTypes.string.isRequired,
 }
 
 
