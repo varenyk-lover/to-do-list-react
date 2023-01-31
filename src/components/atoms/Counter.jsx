@@ -1,10 +1,11 @@
+
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
 
 const Counter = ({amountOfAllTasks, amountOfDoneTasks}) => (
-    <StyledCounter>{amountOfDoneTasks || 0} from {amountOfAllTasks || 0} done</StyledCounter>
+    <StyledCounter>{amountOfDoneTasks} from {amountOfAllTasks} done</StyledCounter>
 );
 
 
@@ -12,8 +13,13 @@ export default Counter;
 
 
 Counter.propTypes = {
-    amountOfAllTasks: PropTypes.number,
-    amountOfDoneTasks: PropTypes.number,
+    amountOfAllTasks: PropTypes.number.isRequired,
+    amountOfDoneTasks: PropTypes.number.isRequired,
+}
+
+Counter.defaultProps = {
+    amountOfAllTasks: 0,
+    amountOfDoneTasks: 0,
 }
 
 
