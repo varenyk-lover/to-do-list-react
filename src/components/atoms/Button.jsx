@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 
 const Button = ({onClick, text, children}) => (
-    <StyledButton onClick={onClick}>{text || children}</StyledButton>
+    <StyledButton onClick={onClick}>{children || text}</StyledButton>
 );
 
 
@@ -12,9 +12,13 @@ export default Button;
 
 
 Button.propTypes = {
-    children: PropTypes.node.isRequired,
+    children: PropTypes.node,
     text: PropTypes.string,
-    onClick: PropTypes.func
+    onClick: PropTypes.func.isRequired
+}
+
+Button.defaultProps = {
+    text: "",
 }
 
 
@@ -26,11 +30,12 @@ const StyledButton = styled.button`
   padding: 5px 15px;
   border-radius: 10px;
   border-style: none;
-  cursor: pointer;
   border-color: transparent;
 
   :hover {
     background: ${({bgColor}) => bgColor || "white"};
     color: ${({color}) => color || "#505053"};
+    border-color: ${({brdrColor}) => brdrColor || "white"};
+    cursor: pointer;
   }
 `;
