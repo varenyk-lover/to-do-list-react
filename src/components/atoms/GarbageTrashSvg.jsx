@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ReactComponent as GarbageTrashIcon } from "../../assets/images/garbage-trash-icon.svg"
+import { ReactComponent as GarbageTrashIcon } from "../../assets/images/garbage-trash-icon.svg";
 
-const StyledIconPen = styled(GarbageTrashIcon)`
+const StyledIconGarbageTrash = styled(GarbageTrashIcon)`
   width: 16px;
   height: 16px;
   fill: ${({color}) => color || "white"};
@@ -13,9 +13,9 @@ const StyledIconPen = styled(GarbageTrashIcon)`
   }
 `;
 
-const PenSvg = () => (
-    <StyledIconPen/>
+const GarbageTrashSvg = () => (
+    <StyledIconGarbageTrash/>
 );
 
-export default PenSvg;
+export default GarbageTrashSvg;
 
