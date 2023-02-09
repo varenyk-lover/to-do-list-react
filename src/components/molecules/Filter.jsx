@@ -5,9 +5,9 @@ import Button from "../atoms/Button";
 
 const Filter = ({onClick}) => (
     <StyledFilterContainer>
-        <Button onClick={onClick} text="All"/>
-        <Button onClick={onClick} text="Active"/>
-        <Button onClick={onClick} text="Done"/>
+        <Button isPrimary onClick={onClick} text="All"/>
+        <Button isPrimary onClick={onClick} text="Active"/>
+        <Button isPrimary onClick={onClick} text="Done"/>
     </StyledFilterContainer>
 );
 
@@ -21,8 +21,7 @@ Filter.propTypes = {
 
 
 const StyledFilterContainer = styled.div`
-  background: ${({bgColor}) => bgColor || "#45454C"};
-  padding: 10px 0;
+  background: transparent;
+  //padding: 10px 0;
   display: flex;
-  justify-content: center;
 `;

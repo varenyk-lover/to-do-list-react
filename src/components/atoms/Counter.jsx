@@ -24,6 +24,9 @@ Counter.defaultProps = {
 
 
 const StyledCounter = styled.p`
-  background: ${({bgColor}) => bgColor || "#45454C"};
-  color: ${({color}) => color || "white"};
+  padding: 15px 0 15px 0;
+  background: transparent;
+  color: #919191;
+  font-size: 23px;
+  text-align: center;
 `;

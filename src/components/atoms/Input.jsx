@@ -20,20 +20,24 @@ Input.propTypes = {
 
 const StyledInput = styled.input`
   background: ${({bgColor}) => bgColor || "#45454C"};
-  color: ${({color}) => color || "#505053"};
+  color: ${({color}) => color || "white"};
   font-size: 25px;
   margin: 10px;
   padding: 5px 15px;
   border-radius: 10px;
-  border-style: none;
+  border-style: solid;
   cursor: pointer;
   border-color: transparent;
+  width: 100%;
 
   ::placeholder {
     text-align: center;
   }
 
-  :hover {
+
+  :focus {
+    outline: 0;
+    outline-offset: 0;
     border-color: white;
   }
 `;
