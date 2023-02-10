@@ -1,4 +1,3 @@
-
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
@@ -29,4 +28,8 @@ const StyledCounter = styled.p`
   color: #919191;
   font-size: 23px;
   text-align: center;
+
+  @media only screen and (max-width: 1200px) {
+    font-size: 18px;
+  }
 `;

@@ -3,13 +3,13 @@ import styled from 'styled-components';
 import PropTypes from "prop-types";
 
 
-const Checkbox = ({ checkHandler, isChecked }) => (
+const Checkbox = ({checkHandler, isChecked}) => (
 
     <CheckboxContainer>
         <HiddenCheckbox checked={isChecked} onChange={checkHandler}/>
         <StyledCheckbox checked={isChecked}>
             <Icon viewBox="0 0 24 24">
-                <polyline points="20 6 9 17 4 12" />
+                <polyline points="20 6 9 17 4 12"/>
             </Icon>
         </StyledCheckbox>
     </CheckboxContainer>
@@ -42,7 +42,7 @@ const Icon = styled.svg`
 `;
 
 // Hide checkbox visually but remain accessible to screen readers.
-const HiddenCheckbox = styled.input.attrs({ type: 'checkbox' })`
+const HiddenCheckbox = styled.input.attrs({type: 'checkbox'})`
   border: 0;
   clip: rect(0 0 0 0);
   //clippath: inset(50%);

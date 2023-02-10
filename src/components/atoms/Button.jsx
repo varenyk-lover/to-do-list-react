@@ -26,12 +26,10 @@ Button.defaultProps = {
 
 const StyledButton = styled.button`
   background: ${({primary}) => primary ? "#45454C" : "transparent"};
-    //background: ${({bgColor}) => bgColor || "#45454C"};
   color: white;
   font-size: ${({primary}) => primary ? "25px" : "20px"};
   margin: ${({primary}) => primary ? "10px" : "0"};
   padding: ${({primary}) => primary ? "5px 15px" : "3px 5px 0 5px"};
-  //padding: ;
   border-radius: 10px;
   border: ${({primary}) => primary ? "1px solid #45454C" : "1px solid transparent"};;
 
@@ -40,8 +38,10 @@ const StyledButton = styled.button`
     color: #262631;
     border: 1px solid white;
     cursor: pointer;
-
   }
 
-
+  @media only screen and (max-width: 1200px) {
+    font-size: 15px;
+    padding: ${({primary}) => primary ? "3px 10px" : "3px 5px 0 5px"};
+  }
 `;

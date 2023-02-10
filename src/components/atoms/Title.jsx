@@ -21,4 +21,8 @@ const StyledTitle = styled.h1`
   color: white;
   text-align: center;
   font-size: 40px;
+
+  @media only screen and (max-width: 1200px) {
+    font-size: 30px;
+  }
 `;

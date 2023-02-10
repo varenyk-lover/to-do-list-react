@@ -40,4 +40,9 @@ const StyledInput = styled.input`
     outline-offset: 0;
     border-color: white;
   }
+
+  @media only screen and (max-width: 1200px) {
+    font-size: 15px;
+    padding: 5px 0;
+  }
 `;

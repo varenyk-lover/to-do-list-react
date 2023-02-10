@@ -43,4 +43,17 @@ const StyledMainPage = styled.div`
   box-shadow: /* offset-x | offset-y | blur-radius | spread-radius | color */ 0px 12px 17px 2px hsla(0, 0%, 0%, 0.14),
   0px 5px 22px 4px hsla(0, 0%, 0%, 0.12),
   0px 7px 8px -4px hsla(0, 0%, 0%, 0.2);
+
+
+  @media only screen and (max-width: 1200px) {
+    width: 50%;
+  }
+
+  @media only screen and (max-width: 992px) {
+    width: 60%;
+  }
+
+  @media only screen and (max-width: 600px) {
+    width: 80%;
+  }
 `;

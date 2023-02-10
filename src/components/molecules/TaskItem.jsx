@@ -9,10 +9,10 @@ import GarbageTrashSvg from "../atoms/GarbageTrashSvg";
 const TaskItem = ({onClick, checkHandler, isChecked, input}) => (
     <StyledTaskItem>
 
-        <label style={{background: "transparent", color: "white", paddingTop: "14px", fontSize: "23px"}}>
+        <StyledLabel>
             <Checkbox checked={isChecked} onChange={checkHandler}/>
             <span style={{marginLeft: 8, background: "transparent"}}>input</span>
-        </label>
+        </StyledLabel>
 
 
         <StyledBtnContainer>
@@ -39,12 +39,24 @@ const StyledTaskItem = styled.div`
   justify-content: space-between;
   border-bottom: 1px solid #45454C;
   margin-bottom: 20px;
+
+  @media only screen and (max-width: 1200px) {
+    margin-bottom: 5px;
+  }
 `;
 
+const StyledLabel = styled.label`
+  background: transparent;
+  color: white;
+  padding-top: 14px;
+  font-size: 23px;
+
+  @media only screen and (max-width: 1200px) {
+    font-size: 18px;
+  }
+`;
 
 const StyledBtnContainer = styled.div`
   background-color: transparent;
-  //padding-top: 10px;
-
   margin-top: 6px;
 `;

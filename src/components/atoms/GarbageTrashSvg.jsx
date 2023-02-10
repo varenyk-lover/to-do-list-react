@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ReactComponent as GarbageTrashIcon } from "../../assets/images/garbage-trash-icon.svg";
+import {ReactComponent as GarbageTrashIcon} from "../../assets/images/garbage-trash-icon.svg";
 
 const StyledIconGarbageTrash = styled(GarbageTrashIcon)`
   width: 16px;
