@@ -6,18 +6,18 @@ import Button from "../atoms/Button";
 import PenSvg from "../atoms/PenSvg";
 import GarbageTrashSvg from "../atoms/GarbageTrashSvg";
 
-const TaskItem = ({onClick, checkHandler, isChecked, input}) => (
+const TaskItem = ({handleEdit, handleDelete, checkHandler, isChecked, task}) => (
     <StyledTaskItem>
 
         <label style={{background: "#45454C", color: "white"}}>
-            <Checkbox checked={isChecked} onChange={checkHandler}/>
-            <span style={{marginLeft: 8, background: "#45454C"}}>{input}</span>
+            <Checkbox isChecked={isChecked} checkHandler={checkHandler}/>
+            <span style={{marginLeft: 8, background: "#45454C"}}>{task}</span>
         </label>
 
 
         <StyledBtnContainer>
-            <Button onClick={onClick} children={<PenSvg/>}/>
-            <Button onClick={onClick} children={<GarbageTrashSvg/>}/>
+            <Button typeOfBtn="button" handleClick={handleEdit}><PenSvg/></Button>
+            <Button typeOfBtn="button" handleClick={handleDelete}><GarbageTrashSvg/></Button>
         </StyledBtnContainer>
     </StyledTaskItem>
 
@@ -26,10 +26,11 @@ const TaskItem = ({onClick, checkHandler, isChecked, input}) => (
 export default TaskItem;
 
 TaskItem.propTypes = {
-    onClick: PropTypes.func.isRequired,
+    handleEdit: PropTypes.func.isRequired,
+    handleDelete: PropTypes.func.isRequired,
     checkHandler: PropTypes.func.isRequired,
     isChecked: PropTypes.bool.isRequired,
-    input: PropTypes.string.isRequired,
+    task: PropTypes.string.isRequired,
 }
 
 const StyledTaskItem = styled.div`

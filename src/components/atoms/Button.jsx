@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 
 
-const Button = ({onClick, text, children}) => (
-    <StyledButton onClick={onClick}>{children || text}</StyledButton>
+const Button = ({handleClick, text, children, typeOfBtn}) => (
+    <StyledButton onClick={handleClick} type={typeOfBtn}>{children || text}</StyledButton>
 );
 
 
@@ -12,9 +12,10 @@ export default Button;
 
 
 Button.propTypes = {
-    children: PropTypes.node,
+    handleClick: PropTypes.func,
     text: PropTypes.string,
-    onClick: PropTypes.func.isRequired
+    children: PropTypes.node,
+    typeOfBtn: PropTypes.string.isRequired,
 }
 
 Button.defaultProps = {
