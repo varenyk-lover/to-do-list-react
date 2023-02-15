@@ -22,10 +22,10 @@ Checkbox.propTypes = {
     isChecked: PropTypes.bool.isRequired,
     checkHandler: PropTypes.func.isRequired
 }
-
-Checkbox.defaultProps = {
-    isChecked: false,
-}
+//
+// Checkbox.defaultProps = {
+//     isChecked: false,
+// }
 
 const CheckboxContainer = styled.div`
   display: inline-block;
