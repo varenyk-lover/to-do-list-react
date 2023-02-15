@@ -23,6 +23,10 @@ Checkbox.propTypes = {
     checkHandler: PropTypes.func.isRequired
 }
 
+Checkbox.defaultProps = {
+    isChecked: false,
+}
+
 const CheckboxContainer = styled.div`
   display: inline-block;
   vertical-align: middle;
