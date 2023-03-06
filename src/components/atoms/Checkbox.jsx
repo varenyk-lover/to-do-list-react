@@ -5,13 +5,14 @@ import PropTypes from "prop-types";
 
 const Checkbox = ({ checkHandler, isChecked }) => (
 
+    // <input type="checkbox"/>
     <CheckboxContainer>
         <HiddenCheckbox checked={isChecked} onChange={checkHandler}/>
-        <StyledCheckbox checked={isChecked}>
+    {/*    <StyledCheckbox checked={isChecked}>
             <Icon viewBox="0 0 24 24">
                 <polyline points="20 6 9 17 4 12" />
             </Icon>
-        </StyledCheckbox>
+        </StyledCheckbox>*/}
     </CheckboxContainer>
 
 );
@@ -39,7 +40,7 @@ const Icon = styled.svg`
 `;
 // Hide checkbox visually but remain accessible to screen readers.
 const HiddenCheckbox = styled.input.attrs({ type: 'checkbox' })`
-  border: 0;
+ /* border: 0;
   clip: rect(0 0 0 0);
   clippath: inset(50%);
   height: 1px;
@@ -48,7 +49,7 @@ const HiddenCheckbox = styled.input.attrs({ type: 'checkbox' })`
   padding: 0;
   position: absolute;
   white-space: nowrap;
-  width: 1px;
+  width: 1px;*/
 `;
 
 const StyledCheckbox = styled.div`
