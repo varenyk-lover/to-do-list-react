@@ -5,9 +5,9 @@ import Button from "../atoms/Button";
 
 const Filter = ({handleClick}) => (
     <StyledFilterContainer>
-        <Button typeOfBtn="button" handleClick={handleClick} text="All"/>
-        <Button typeOfBtn="button" handleClick={handleClick} text="Active"/>
-        <Button typeOfBtn="button" handleClick={handleClick} text="Done"/>
+        <Button type="button" handleClick={handleClick} text="All"/>
+        <Button type="button" handleClick={handleClick} text="Active"/>
+        <Button type="button" handleClick={handleClick} text="Done"/>
     </StyledFilterContainer>
 );
 

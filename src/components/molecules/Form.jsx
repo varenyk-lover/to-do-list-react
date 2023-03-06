@@ -6,8 +6,8 @@ import Button from "../atoms/Button";
 
 const Form = ({handleSubmit, handleChange, input}) => (
     <StyledForm onSubmit={handleSubmit}>
-        <Input handleChange={handleChange} input={input} typeOfInput="text" textPlaceholder="Add new item"/>
-        <Button typeOfBtn="submit" text="Add"/>
+        <Input handleChange={handleChange} input={input} type="text" textPlaceholder="Add new item"/>
+        <Button type="submit" text="Add"/>
     </StyledForm>
 );
 
