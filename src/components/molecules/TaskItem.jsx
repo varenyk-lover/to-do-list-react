@@ -16,8 +16,8 @@ const TaskItem = ({handleEdit, handleDelete, checkHandler, isChecked, task}) => 
 
 
         <StyledBtnContainer>
-            <Button typeOfBtn="button" handleClick={handleEdit}><PenSvg/></Button>
-            <Button typeOfBtn="button" handleClick={handleDelete}><GarbageTrashSvg/></Button>
+            <Button type="button" handleClick={handleEdit}><PenSvg/></Button>
+            <Button type="button" handleClick={handleDelete}><GarbageTrashSvg/></Button>
         </StyledBtnContainer>
     </StyledTaskItem>
 
