@@ -9,10 +9,10 @@ import GarbageTrashSvg from "../atoms/GarbageTrashSvg";
 const TaskItem = ({handleEdit, handleDelete, checkHandler, isChecked, task}) => (
     <StyledTaskItem>
 
-        <label style={{background: "#45454C", color: "white"}}>
+        <StyledLabel>
             <Checkbox isChecked={isChecked} checkHandler={checkHandler}/>
-            <span style={{marginLeft: 8, background: "#45454C"}}>{task}</span>
-        </label>
+            <StyledSpan>{task}</StyledSpan>
+        </StyledLabel>
 
 
         <StyledBtnContainer>
@@ -35,13 +35,22 @@ TaskItem.propTypes = {
 
 const StyledTaskItem = styled.div`
   max-height: 22px;
-  background: ${({bgColor}) => bgColor || "#45454C"};
+  background: transparent;
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid #45454C;
   margin-bottom: 20px;
 `;
 
+const StyledLabel = styled.label`
+  color: white;
+  background: transparent;
+`;
+
+const StyledSpan = styled.span`
+  margin-left: 8px;
+  background: transparent;
+`;
 
 const StyledBtnContainer = styled.div`
   background-color: transparent;
