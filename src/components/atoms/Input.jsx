@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 
 
-const Input = ({onChangeHandler, placeholder, input}) => (
-    <StyledInput type="text" onChange={onChangeHandler} value={input} placeholder={placeholder}/>
+const Input = ({handleChange, placeholder, input, type}) => (
+    <StyledInput type={type} onChange={handleChange} value={input} placeholder={placeholder}/>
 );
 
 
@@ -12,15 +12,19 @@ export default Input;
 
 
 Input.propTypes = {
-    placeholder: PropTypes.string.isRequired,
-    onChangeHandler: PropTypes.func.isRequired,
+    type: PropTypes.string.isRequired,
+    handleChange: PropTypes.func.isRequired,
     input: PropTypes.string.isRequired,
+    placeholder: PropTypes.string,
 }
 
+Input.defaultProps = {
+    input: ""
+}
 
 const StyledInput = styled.input`
   background: ${({bgColor}) => bgColor || "#45454C"};
-  color: ${({color}) => color || "#505053"};
+  color: white;
   font-size: 25px;
   margin: 10px;
   padding: 5px 15px;
@@ -36,4 +40,9 @@ const StyledInput = styled.input`
   :hover {
     border-color: white;
   }
+
+  ::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+  }
+
 `;

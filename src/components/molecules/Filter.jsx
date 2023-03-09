@@ -3,11 +3,11 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import Button from "../atoms/Button";
 
-const Filter = ({onClick}) => (
+const Filter = ({handleClick}) => (
     <StyledFilterContainer>
-        <Button onClick={onClick} text="All"/>
-        <Button onClick={onClick} text="Active"/>
-        <Button onClick={onClick} text="Done"/>
+        <Button type="button" handleClick={handleClick} text="All"/>
+        <Button type="button" handleClick={handleClick} text="Active"/>
+        <Button type="button" handleClick={handleClick} text="Done"/>
     </StyledFilterContainer>
 );
 
@@ -16,7 +16,7 @@ export default Filter;
 
 
 Filter.propTypes = {
-    onClick: PropTypes.func.isRequired
+    handleClick: PropTypes.func.isRequired
 }
 
 
