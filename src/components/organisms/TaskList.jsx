@@ -3,14 +3,13 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import TaskItem from "../molecules/TaskItem";
 
-const TaskList = ({handleEdit, handleDelete, checkHandler, isChecked, tasks}) => {
+const TaskList = ({handleEdit, handleDelete, checkHandler, isChecked, allTasks,}) => {
 
     return (
         <StyledTaskList>
-
-            {tasks.map((item, index) => (
+            {allTasks.map((item, index) => (
                 <TaskItem handleEdit={handleEdit} handleDelete={handleDelete}
-                          checkHandler={checkHandler} isChecked={isChecked} task={item} key={`${item}-${index}`}/>
+                          checkHandler={checkHandler} isChecked={isChecked} value={item} key={`${item}-${index}`}/>
             ))}
         </StyledTaskList>
     )
@@ -25,7 +24,7 @@ TaskList.propTypes = {
     handleDelete: PropTypes.func.isRequired,
     checkHandler: PropTypes.func.isRequired,
     isChecked: PropTypes.bool.isRequired,
-    // task: PropTypes.string.isRequired,
+    allTasks: PropTypes.array.isRequired,
 }
 
 const StyledTaskList = styled.div`

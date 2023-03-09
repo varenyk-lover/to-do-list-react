@@ -2,12 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from "prop-types";
 
-const Checkbox = ({checkHandler, isChecked}) => (
+const Checkbox = ({checkHandler, isChecked, value}) => (
 
 
     <CheckboxContainer>
-        <HiddenCheckbox type="checkbox" onChange={checkHandler} checked={isChecked}/>
-        {/* <input type="checkbox" checked={isChecked} onChange={checkHandler}/>*/}
+        <HiddenCheckbox type="checkbox" value={value} onChange={checkHandler} checked={isChecked}/>
         <StyledCheckbox checked={isChecked}>
             <Icon viewBox="0 0 24 24">
                 <polyline points="20 6 9 17 4 12"/>
@@ -21,7 +20,8 @@ export default Checkbox;
 
 Checkbox.propTypes = {
     isChecked: PropTypes.bool.isRequired,
-    checkHandler: PropTypes.func.isRequired
+    checkHandler: PropTypes.func.isRequired,
+    value: PropTypes.string.isRequired,
 }
 
 
