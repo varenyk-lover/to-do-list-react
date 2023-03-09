@@ -6,12 +6,12 @@ import Button from "../atoms/Button";
 import PenSvg from "../atoms/PenSvg";
 import GarbageTrashSvg from "../atoms/GarbageTrashSvg";
 
-const TaskItem = ({handleEdit, handleDelete, checkHandler, isChecked, task}) => (
+const TaskItem = ({handleEdit, handleDelete, checkHandler, isChecked, value}) => (
     <StyledTaskItem>
 
         <StyledLabel>
-            <Checkbox isChecked={isChecked} checkHandler={checkHandler}/>
-            <StyledSpan>{task}</StyledSpan>
+            <Checkbox isChecked={isChecked} checkHandler={checkHandler} value={value}/>
+            <StyledSpan>{value}</StyledSpan>
         </StyledLabel>
 
 
@@ -30,7 +30,7 @@ TaskItem.propTypes = {
     handleDelete: PropTypes.func.isRequired,
     checkHandler: PropTypes.func.isRequired,
     isChecked: PropTypes.bool.isRequired,
-    task: PropTypes.string.isRequired,
+    value: PropTypes.string.isRequired,
 }
 
 const StyledTaskItem = styled.div`
