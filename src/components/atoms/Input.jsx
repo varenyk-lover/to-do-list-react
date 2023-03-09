@@ -15,9 +15,12 @@ Input.propTypes = {
     type: PropTypes.string.isRequired,
     handleChange: PropTypes.func.isRequired,
     input: PropTypes.string.isRequired,
-    placeholder: PropTypes.string.isRequired,
+    placeholder: PropTypes.string,
 }
 
+Input.defaultProps = {
+    input: ""
+}
 
 const StyledInput = styled.input`
   background: ${({bgColor}) => bgColor || "#45454C"};
