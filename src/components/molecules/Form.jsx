@@ -7,7 +7,7 @@ import Button from "../atoms/Button";
 const Form = ({handleSubmit, handleChange, input}) => (
     <StyledForm onSubmit={handleSubmit}>
         <Input handleChange={handleChange} input={input} type="text" placeholder="Add new item"/>
-        <Button type="submit" text="Add"/>
+        <Button isPrimary type="submit" text="Add"/>
     </StyledForm>
 );
 
@@ -21,7 +21,16 @@ Form.propTypes = {
     input: PropTypes.string.isRequired,
 }
 
+Form.defaultProps = {
+    input: ""
+}
 
 const StyledForm = styled.form`
   background: ${({bgColor}) => bgColor || "#262631"};
+  display: flex;
+
+
+  @media only screen and (max-width: 480px) {
+    flex-direction: column;
+  }
 `;

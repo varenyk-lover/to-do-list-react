@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import TaskItem from "../molecules/TaskItem";
 
-const TaskList = ({handleEdit, handleDelete, checkHandler, isChecked, allTasks,}) => {
+const TaskList = ({handleEdit, handleDelete, checkHandler, isChecked, allTasks}) => {
 
     return (
         <StyledTaskList>
@@ -28,6 +28,8 @@ TaskList.propTypes = {
 }
 
 const StyledTaskList = styled.div`
-  background: ${({bgColor}) => bgColor || "#45454C"};
-  padding: 15px 20px 10px 20px;
+  background: transparent;
+  padding: 0 2px;
+  width: 100%;
+  margin-bottom: 10px;
 `;

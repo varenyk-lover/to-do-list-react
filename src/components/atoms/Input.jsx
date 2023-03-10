@@ -15,7 +15,7 @@ Input.propTypes = {
     type: PropTypes.string.isRequired,
     handleChange: PropTypes.func.isRequired,
     input: PropTypes.string.isRequired,
-    placeholder: PropTypes.string,
+    placeholder: PropTypes.string.isRequired,
 }
 
 Input.defaultProps = {
@@ -29,12 +29,20 @@ const StyledInput = styled.input`
   margin: 10px;
   padding: 5px 15px;
   border-radius: 10px;
-  border-style: none;
+  border-style: solid;
   cursor: pointer;
   border-color: transparent;
+  width: 100%;
 
   ::placeholder {
     text-align: center;
+  }
+
+
+  :focus {
+    outline: 0;
+    outline-offset: 0;
+    border-color: white;
   }
 
   :hover {
@@ -45,4 +53,12 @@ const StyledInput = styled.input`
     -webkit-appearance: none;
   }
 
+  @media only screen and (max-width: 1200px) {
+    font-size: 15px;
+    padding: 5px 0;
+  }
+
+  @media only screen and (max-width: 480px) {
+    margin: 0;
+  }
 `;

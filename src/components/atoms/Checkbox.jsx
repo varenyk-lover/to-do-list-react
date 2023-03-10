@@ -3,8 +3,6 @@ import styled from 'styled-components';
 import PropTypes from "prop-types";
 
 const Checkbox = ({checkHandler, isChecked, value}) => (
-
-
     <CheckboxContainer>
         <HiddenCheckbox type="checkbox" value={value} onChange={checkHandler} checked={isChecked}/>
         <StyledCheckbox checked={isChecked}>
@@ -22,8 +20,7 @@ Checkbox.propTypes = {
     isChecked: PropTypes.bool.isRequired,
     checkHandler: PropTypes.func.isRequired,
     value: PropTypes.string.isRequired,
-}
-
+};
 
 const CheckboxContainer = styled.div`
   display: inline-block;
@@ -49,17 +46,21 @@ const HiddenCheckbox = styled.input`
   white-space: nowrap;
   width: 1px;
   display: none;
-`
+`;
 
 const StyledCheckbox = styled.div`
   display: inline-block;
   width: 16px;
   height: 16px;
-  background: ${({checked}) => checked ? 'white' : '#262631'};
-  border-radius: 2px;
+  background: ${({checked}) => checked ? 'white' : 'transparent'};
+  border-radius: 4px;
   box-shadow: 0 0 0 1px white;
   transition: all 150ms;
 
+
+  :hover {
+    cursor: pointer;
+  }
 
   ${Icon} {
     visibility: ${({checked}) => checked ? 'visible' : 'hidden'};

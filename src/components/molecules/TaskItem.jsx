@@ -16,8 +16,10 @@ const TaskItem = ({handleEdit, handleDelete, checkHandler, isChecked, value}) =>
 
 
         <StyledBtnContainer>
+
             <Button type="button" handleClick={handleEdit}><PenSvg/></Button>
             <Button type="button" handleClick={handleDelete}><GarbageTrashSvg/></Button>
+
         </StyledBtnContainer>
     </StyledTaskItem>
 
@@ -34,17 +36,26 @@ TaskItem.propTypes = {
 }
 
 const StyledTaskItem = styled.div`
-  max-height: 22px;
   background: transparent;
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid #45454C;
   margin-bottom: 20px;
+
+  @media only screen and (max-width: 1200px) {
+    margin-bottom: 5px;
+  }
 `;
 
 const StyledLabel = styled.label`
-  color: white;
   background: transparent;
+  color: white;
+  padding-top: 14px;
+  font-size: 23px;
+
+  @media only screen and (max-width: 1200px) {
+    font-size: 18px;
+  }
 `;
 
 const StyledSpan = styled.span`
@@ -53,6 +64,11 @@ const StyledSpan = styled.span`
 `;
 
 const StyledBtnContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
   background-color: transparent;
+  margin-top: 6px;
+  min-width: 70px;
+  height: 30px;
 `;
 
