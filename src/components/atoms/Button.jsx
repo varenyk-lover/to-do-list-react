@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 
 
-const Button = ({onClick, text, children, isPrimary}) => (
-    <StyledButton className="redTest" onClick={onClick} primary={isPrimary}>{children || text}</StyledButton>
+const Button = ({handleClick, text, children, type, isPrimary}) => (
+    <StyledButton onClick={handleClick} type={type} primary={isPrimary}>{children || text}</StyledButton>
 );
 
 
@@ -14,13 +14,15 @@ export default Button;
 Button.propTypes = {
     children: PropTypes.node,
     text: PropTypes.string,
-    onClick: PropTypes.func.isRequired,
-    primary: PropTypes.bool
+    handleClick: PropTypes.func.isRequired,
+    type: PropTypes.string.isRequired,
+    isPrimary: PropTypes.bool
 }
 
 Button.defaultProps = {
     text: "",
-    primary: false
+    isPrimary: false,
+    handleClick: null
 }
 
 
@@ -29,7 +31,7 @@ const StyledButton = styled.button`
   color: white;
   font-size: ${({primary}) => primary ? "25px" : "20px"};
   margin: ${({primary}) => primary ? "10px" : "0"};
-  padding: ${({primary}) => primary ? "5px 15px" : "3px 5px 0 5px"};
+  padding: ${({primary}) => primary ? "5px 15px" : "3px 7px 0 7px"};
   border-radius: 10px;
   border: ${({primary}) => primary ? "1px solid #45454C" : "1px solid transparent"};;
 
@@ -40,8 +42,18 @@ const StyledButton = styled.button`
     cursor: pointer;
   }
 
-  @media only screen and (max-width: 1200px) {
+
+  :active {
+    transform: scale(1.2);
+  }
+
+  @media only screen and (max-width: 960px) {
+    font-size: 20px;
+    padding: ${({primary}) => primary ? "3px 10px" : "3px 6px 0 6px"};
+  }
+
+  @media only screen and (max-width: 480px) {
     font-size: 15px;
-    padding: ${({primary}) => primary ? "3px 10px" : "3px 5px 0 5px"};
+    padding: ${({primary}) => primary ? "3px 10px" : "3px 6px 0 6px"};
   }
 `;

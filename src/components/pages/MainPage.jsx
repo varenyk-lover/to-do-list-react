@@ -8,16 +8,19 @@ import Filter from "../molecules/Filter";
 import Form from "../molecules/Form";
 import TaskList from "../organisms/TaskList";
 
-const MainPage = () => (
-    <StyledMainPage>
-        <Title title="Things to do"/>
-        <Counter/>
-        <Input type="text" placeholder="Search"/>
-        <Filter/>
-        <TaskList/>
-        <Form/>
-    </StyledMainPage>
-);
+const MainPage = () => {
+
+    return (
+        <StyledMainPage>
+            <Title title="Things to do"/>
+            <Counter/>
+            <Input type="text" placeholder="Search"/>
+            <Filter/>
+            <TaskList/>
+            <Form/>
+        </StyledMainPage>
+    )
+};
 
 export default MainPage;
 
@@ -45,7 +48,7 @@ const StyledMainPage = styled.div`
   0px 7px 8px -4px hsla(0, 0%, 0%, 0.2);
 
 
-  @media only screen and (max-width: 1200px) {
+  @media only screen and (max-width: 1680px) {
     width: 50%;
   }
 

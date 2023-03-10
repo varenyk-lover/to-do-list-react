@@ -2,11 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from "prop-types";
 
-
-const Checkbox = ({checkHandler, isChecked}) => (
-
+const Checkbox = ({checkHandler, isChecked, value}) => (
     <CheckboxContainer>
-        <HiddenCheckbox checked={isChecked} onChange={checkHandler}/>
+        <HiddenCheckbox type="checkbox" value={value} onChange={checkHandler} checked={isChecked}/>
         <StyledCheckbox checked={isChecked}>
             <Icon viewBox="0 0 24 24">
                 <polyline points="20 6 9 17 4 12"/>
@@ -20,8 +18,9 @@ export default Checkbox;
 
 Checkbox.propTypes = {
     isChecked: PropTypes.bool.isRequired,
-    checkHandler: PropTypes.func.isRequired
-}
+    checkHandler: PropTypes.func.isRequired,
+    value: PropTypes.string.isRequired,
+};
 
 const CheckboxContainer = styled.div`
   display: inline-block;
@@ -33,19 +32,12 @@ const Icon = styled.svg`
   fill: none;
   stroke: black;
   stroke-width: 2px;
-  //background: white;
-  //background-color: white;
-  background: ${({isChecked}) => (isChecked ? 'white' : '#262631')};
-  border-radius: 2px;
-
-
+  background: white;
 `;
-
 // Hide checkbox visually but remain accessible to screen readers.
-const HiddenCheckbox = styled.input.attrs({type: 'checkbox'})`
+const HiddenCheckbox = styled.input`
   border: 0;
   clip: rect(0 0 0 0);
-  //clippath: inset(50%);
   height: 1px;
   margin: -1px;
   overflow: hidden;
@@ -53,26 +45,25 @@ const HiddenCheckbox = styled.input.attrs({type: 'checkbox'})`
   position: absolute;
   white-space: nowrap;
   width: 1px;
-
-
+  display: none;
 `;
 
 const StyledCheckbox = styled.div`
   display: inline-block;
   width: 16px;
   height: 16px;
-    //background: ${({isChecked}) => (isChecked ? 'white' : '#262631')};
-  background-color: transparent;
+  background: ${({checked}) => checked ? 'white' : 'transparent'};
   border-radius: 4px;
   box-shadow: 0 0 0 1px white;
   transition: all 150ms;
+
 
   :hover {
     cursor: pointer;
   }
 
   ${Icon} {
-    visibility: ${({isChecked}) => (isChecked ? 'visible' : 'hidden')};
+    visibility: ${({checked}) => checked ? 'visible' : 'hidden'};
   }
 `;
 

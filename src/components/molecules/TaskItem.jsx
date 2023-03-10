@@ -6,18 +6,20 @@ import Button from "../atoms/Button";
 import PenSvg from "../atoms/PenSvg";
 import GarbageTrashSvg from "../atoms/GarbageTrashSvg";
 
-const TaskItem = ({onClick, checkHandler, isChecked, input}) => (
+const TaskItem = ({handleEdit, handleDelete, checkHandler, isChecked, value}) => (
     <StyledTaskItem>
 
         <StyledLabel>
-            <Checkbox checked={isChecked} onChange={checkHandler}/>
-            <span style={{marginLeft: 8, background: "transparent"}}>input</span>
+            <Checkbox isChecked={isChecked} checkHandler={checkHandler} value={value}/>
+            <StyledSpan>{value}</StyledSpan>
         </StyledLabel>
 
 
         <StyledBtnContainer>
-            <Button onClick={onClick} children={<PenSvg/>}/>
-            <Button onClick={onClick} children={<GarbageTrashSvg/>}/>
+
+            <Button type="button" handleClick={handleEdit}><PenSvg/></Button>
+            <Button type="button" handleClick={handleDelete}><GarbageTrashSvg/></Button>
+
         </StyledBtnContainer>
     </StyledTaskItem>
 
@@ -26,14 +28,14 @@ const TaskItem = ({onClick, checkHandler, isChecked, input}) => (
 export default TaskItem;
 
 TaskItem.propTypes = {
-    onClick: PropTypes.func.isRequired,
+    handleEdit: PropTypes.func.isRequired,
+    handleDelete: PropTypes.func.isRequired,
     checkHandler: PropTypes.func.isRequired,
     isChecked: PropTypes.bool.isRequired,
-    input: PropTypes.string.isRequired,
+    value: PropTypes.string.isRequired,
 }
 
 const StyledTaskItem = styled.div`
-
   background: transparent;
   display: flex;
   justify-content: space-between;
@@ -56,7 +58,17 @@ const StyledLabel = styled.label`
   }
 `;
 
+const StyledSpan = styled.span`
+  margin-left: 8px;
+  background: transparent;
+`;
+
 const StyledBtnContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
   background-color: transparent;
   margin-top: 6px;
+  min-width: 70px;
+  height: 30px;
 `;
+
