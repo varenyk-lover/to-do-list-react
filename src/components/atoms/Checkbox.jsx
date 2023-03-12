@@ -33,6 +33,7 @@ const Icon = styled.svg`
   stroke: black;
   stroke-width: 2px;
   background: white;
+  border-radius: 4px;
 `;
 // Hide checkbox visually but remain accessible to screen readers.
 const HiddenCheckbox = styled.input`

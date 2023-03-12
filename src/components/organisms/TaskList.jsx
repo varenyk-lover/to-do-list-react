@@ -7,9 +7,9 @@ const TaskList = ({handleEdit, handleDelete, checkHandler, isChecked, allTasks})
 
     return (
         <StyledTaskList>
-            {allTasks.map((item, index) => (
-                <TaskItem handleEdit={handleEdit} handleDelete={handleDelete}
-                          checkHandler={checkHandler} isChecked={isChecked} value={item} key={`${item}-${index}`}/>
+            {allTasks.map(({title, id}) => (
+                <TaskItem taskName={title} key={id} handleEdit={handleEdit} handleDelete={() => handleDelete(id)}
+                          checkHandler={checkHandler} isChecked={isChecked}/>
             ))}
         </StyledTaskList>
     )
