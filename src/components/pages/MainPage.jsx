@@ -26,8 +26,12 @@ const MainPage = () => {
         if (!newTask.title) return;
         setAllTasks((prev) => [newTask, ...prev]);
         setNewTask({});
+        console.log(setAllTasks.length);
     };
 
+    const handleDelete = (taskIdToRemove) => {
+        setAllTasks((prev) => prev.filter((task) => task.id !== taskIdToRemove));
+    };
 
     return (
         <StyledMainPage>
@@ -35,8 +39,9 @@ const MainPage = () => {
             <Counter/>
             <Input type="text" placeholder="Search"/>
             <Filter/>
-            <TaskList allTasks={allTasks}/>
-            <Form newTask={newTask} handleSubmit={handleSubmit} handleChange={handleChange}/>
+            <TaskList allTasks={allTasks} handleDelete={handleDelete}/>
+            <Form newTask={newTask} handleSubmit={handleSubmit}
+                  handleChange={handleChange}/>
         </StyledMainPage>
     )
 };
