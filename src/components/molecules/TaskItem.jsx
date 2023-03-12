@@ -6,12 +6,12 @@ import Button from "../atoms/Button";
 import PenSvg from "../atoms/PenSvg";
 import GarbageTrashSvg from "../atoms/GarbageTrashSvg";
 
-const TaskItem = ({handleEdit, handleDelete, checkHandler, isChecked, value}) => (
+const TaskItem = ({handleEdit, handleDelete, checkHandler, isChecked, taskName}) => (
     <StyledTaskItem>
 
         <StyledLabel>
-            <Checkbox isChecked={isChecked} checkHandler={checkHandler} value={value}/>
-            <StyledSpan>{value}</StyledSpan>
+            <Checkbox isChecked={isChecked} checkHandler={checkHandler} value={taskName}/>
+            <StyledSpan>{taskName}</StyledSpan>
         </StyledLabel>
 
 
@@ -32,7 +32,7 @@ TaskItem.propTypes = {
     handleDelete: PropTypes.func.isRequired,
     checkHandler: PropTypes.func.isRequired,
     isChecked: PropTypes.bool.isRequired,
-    value: PropTypes.string.isRequired,
+    taskName: PropTypes.string.isRequired,
 }
 
 const StyledTaskItem = styled.div`
@@ -51,7 +51,6 @@ const StyledLabel = styled.label`
   background: transparent;
   color: white;
   padding-top: 14px;
-  font-size: 23px;
 
   @media only screen and (max-width: 1200px) {
     font-size: 18px;
@@ -61,6 +60,7 @@ const StyledLabel = styled.label`
 const StyledSpan = styled.span`
   margin-left: 8px;
   background: transparent;
+  font-size: 23px;
 `;
 
 const StyledBtnContainer = styled.div`

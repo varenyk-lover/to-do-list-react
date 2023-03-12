@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 
 
-const Input = ({handleChange, placeholder, input, type}) => (
-    <StyledInput type={type} onChange={handleChange} value={input} placeholder={placeholder}/>
+const Input = ({handleChange, placeholder, value, type, name}) => (
+    <StyledInput type={type} onChange={handleChange} value={value} name={name} placeholder={placeholder}/>
 );
 
 
@@ -14,12 +14,14 @@ export default Input;
 Input.propTypes = {
     type: PropTypes.string.isRequired,
     handleChange: PropTypes.func.isRequired,
-    input: PropTypes.string.isRequired,
+    value: PropTypes.string.isRequired,
     placeholder: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
 }
 
 Input.defaultProps = {
-    input: ""
+    value: "",
+    name: "",
 }
 
 const StyledInput = styled.input`

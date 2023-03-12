@@ -4,9 +4,10 @@ import styled from "styled-components";
 import Input from "../atoms/Input";
 import Button from "../atoms/Button";
 
-const Form = ({handleSubmit, handleChange, input}) => (
+const Form = ({handleSubmit, handleChange, newTask}) => (
     <StyledForm onSubmit={handleSubmit}>
-        <Input handleChange={handleChange} input={input} type="text" placeholder="Add new item"/>
+        <Input handleChange={handleChange} value={newTask.title || ""} type="text" name="title"
+               placeholder="Add new item"/>
         <Button isPrimary type="submit" text="Add"/>
     </StyledForm>
 );
@@ -18,11 +19,7 @@ export default Form;
 Form.propTypes = {
     handleSubmit: PropTypes.func.isRequired,
     handleChange: PropTypes.func.isRequired,
-    input: PropTypes.string.isRequired,
-}
-
-Form.defaultProps = {
-    input: ""
+    newTask: PropTypes.object.isRequired,
 }
 
 const StyledForm = styled.form`
