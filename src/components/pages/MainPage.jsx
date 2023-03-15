@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import Input from "../atoms/Input";
@@ -16,7 +16,8 @@ const MainPage = () => {
         setNewTask((prev) => ({
             ...prev,
             id: Date.now(),
-            [name]: value
+            [name]: value,
+            checked: false
         }));
     };
 
@@ -26,24 +27,49 @@ const MainPage = () => {
         if (!newTask.title) return;
         setAllTasks((prev) => [newTask, ...prev]);
         setNewTask({});
-        console.log(setAllTasks.length);
+
     };
 
     const handleDelete = (taskIdToRemove) => {
         setAllTasks((prev) => prev.filter((task) => task.id !== taskIdToRemove));
     };
 
+    const [amountOfAllTasks, setAmountOfAllTasks] = useState(0);
+    useEffect(() => {
+        setAmountOfAllTasks(allTasks.length);
+    }, [allTasks]);
+
+    const [amountOfDoneTasks, setAmountOfDoneTasks] = useState(0);
+    const checkHandler = (id) => {
+        let checkedTask = [...allTasks].filter(task => {
+            if (task.id === id) {
+                task.checked = !task.checked;
+                if (task.checked === true) {
+                    setAmountOfDoneTasks(amountOfDoneTasks - 1);
+                } else if (task.checked === false) {
+                    setAmountOfDoneTasks(amountOfDoneTasks + 1);
+                }
+            }
+            return task;
+        })
+        setAllTasks(checkedTask);
+
+
+    };
+
+
     return (
         <StyledMainPage>
             <Title title="Things to do"/>
-            <Counter/>
+            <Counter amountOfAllTasks={amountOfAllTasks} amountOfDoneTasks={amountOfDoneTasks}/>
             <Input type="text" placeholder="Search"/>
             <Filter/>
-            <TaskList allTasks={allTasks} handleDelete={handleDelete}/>
+            <TaskList allTasks={allTasks} handleDelete={handleDelete} checkHandler={checkHandler}
+            />
             <Form newTask={newTask} handleSubmit={handleSubmit}
                   handleChange={handleChange}/>
         </StyledMainPage>
-    )
+    );
 };
 
 export default MainPage;
