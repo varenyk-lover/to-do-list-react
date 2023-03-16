@@ -35,7 +35,12 @@ const MainPage = () => {
 
     const handleDelete = (taskIdToRemove) => {
         setAllTasks((prev) => prev.filter((task) => task.id !== taskIdToRemove));
-        setAmountOfDoneTasks(amountOfDoneTasks - 1);
+
+        if (amountOfDoneTasks < 1) {
+            setAmountOfDoneTasks(0);
+        } else {
+            setAmountOfDoneTasks(amountOfDoneTasks - 1);
+        }
     };
 
 

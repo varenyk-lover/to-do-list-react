@@ -16,11 +16,6 @@ Counter.propTypes = {
     amountOfDoneTasks: PropTypes.number.isRequired,
 }
 
-Counter.defaultProps = {
-    amountOfAllTasks: 0,
-    amountOfDoneTasks: 0,
-}
-
 
 const StyledCounter = styled.p`
   padding: 15px 0 15px 0;
