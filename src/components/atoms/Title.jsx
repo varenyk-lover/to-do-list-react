@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 
 
-const Title = ({title}) => (
-    <StyledTitle>{title}</StyledTitle>
+const Title = ({heading}) => (
+    <StyledTitle>{heading}</StyledTitle>
 );
 
 
@@ -12,7 +12,7 @@ export default Title;
 
 
 Title.propTypes = {
-    title: PropTypes.string.isRequired,
+    heading: PropTypes.string.isRequired,
 }
 
 
