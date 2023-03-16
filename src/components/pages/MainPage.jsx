@@ -22,6 +22,9 @@ const MainPage = () => {
     };
 
     const [allTasks, setAllTasks] = useState([]);
+    const [amountOfAllTasks, setAmountOfAllTasks] = useState(0);
+    const [amountOfDoneTasks, setAmountOfDoneTasks] = useState(0);
+
     const handleSubmit = (event) => {
         event.preventDefault();
         if (!newTask.title) return;
@@ -32,22 +35,22 @@ const MainPage = () => {
 
     const handleDelete = (taskIdToRemove) => {
         setAllTasks((prev) => prev.filter((task) => task.id !== taskIdToRemove));
+        setAmountOfDoneTasks(amountOfDoneTasks - 1);
     };
 
-    const [amountOfAllTasks, setAmountOfAllTasks] = useState(0);
+
     useEffect(() => {
         setAmountOfAllTasks(allTasks.length);
     }, [allTasks]);
 
-    const [amountOfDoneTasks, setAmountOfDoneTasks] = useState(0);
     const checkHandler = (id) => {
         let checkedTask = [...allTasks].filter(task => {
             if (task.id === id) {
                 task.checked = !task.checked;
                 if (task.checked === true) {
-                    setAmountOfDoneTasks(amountOfDoneTasks - 1);
-                } else if (task.checked === false) {
                     setAmountOfDoneTasks(amountOfDoneTasks + 1);
+                } else if (task.checked === false) {
+                    setAmountOfDoneTasks(amountOfDoneTasks - 1);
                 }
             }
             return task;
