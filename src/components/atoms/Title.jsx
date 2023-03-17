@@ -7,13 +7,12 @@ const Title = ({heading}) => (
     <StyledTitle>{heading}</StyledTitle>
 );
 
-
 export default Title;
 
 
 Title.propTypes = {
     heading: PropTypes.string.isRequired,
-}
+};
 
 
 const StyledTitle = styled.h1`
@@ -24,5 +23,9 @@ const StyledTitle = styled.h1`
 
   @media only screen and (max-width: 1200px) {
     font-size: 30px;
+  }
+
+  @media only screen and (max-width: 480px) {
+    font-size: 23px;
   }
 `;

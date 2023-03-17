@@ -61,26 +61,26 @@ const MainPage = () => {
         })
         setAllTasks(checkedTask);
     };
-    /*
 
-        const [edit, setEdit] = useState(null);
-        const [editedTask, setEditedTask] = useState(0);
 
-        const editTask = (id, title) => {
-            setEdit(id);
-            setEditedTask(title);
-        };
+    const [edit, setEdit] = useState(null);
+    const [value, setValue] = useState('');
 
-        const saveEditedTask = (id) => {
-            let changedTask = [...allTasks].map(task => {
-                if (task.id === id) {
-                    task.title = value;
-                }
-                return task;
-            });
-            setAllTasks(changedTask);
-            setEdit(null);
-        };*/
+    const editTask = (id, title) => {
+        setEdit(id);
+        setValue(title);
+    };
+
+    const saveEditedTask = (id) => {
+        let changedTask = [...allTasks].map(task => {
+            if (task.id === id) {
+                task.title = value;
+            }
+            return task;
+        });
+        setAllTasks(changedTask);
+        setEdit(null);
+    };
 
     return (
         <StyledMainPage>
@@ -89,7 +89,9 @@ const MainPage = () => {
             <Input type="text" placeholder="Search"/>
             <Filter/>
             <TaskList allTasks={allTasks} handleDelete={handleDeleteTask} checkHandler={checkHandler}
-            />
+                      handleEdit={editTask}
+                      handleSubmit={saveEditedTask}
+                      handleChange={setValue} value={value} edit={edit}/>
             <Form value={newTask.title || ""} handleSubmit={handleSubmitNewTask}
                   handleChange={handleAddTask} text="Add" placeholder="Add new task"/>
         </StyledMainPage>
