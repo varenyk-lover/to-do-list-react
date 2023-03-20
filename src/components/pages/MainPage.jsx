@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import PropTypes from "prop-types";
 import styled from "styled-components";
 import Input from "../atoms/Input";
 import Counter from "../atoms/Counter";
@@ -11,7 +10,7 @@ import TaskList from "../organisms/TaskList";
 const MainPage = () => {
 
     const [newTask, setNewTask] = useState({});
-    const handleChange = ({target}) => {
+    const handleAddTask = ({target}) => {
         const {name, value} = target;
         setNewTask((prev) => ({
             ...prev,
@@ -25,15 +24,14 @@ const MainPage = () => {
     const [amountOfAllTasks, setAmountOfAllTasks] = useState(0);
     const [amountOfDoneTasks, setAmountOfDoneTasks] = useState(0);
 
-    const handleSubmit = (event) => {
+    const handleSubmitNewTask = (event) => {
         event.preventDefault();
         if (!newTask.title) return;
         setAllTasks((prev) => [newTask, ...prev]);
         setNewTask({});
-
     };
 
-    const handleDelete = (taskIdToRemove) => {
+    const handleDeleteTask = (taskIdToRemove) => {
         setAllTasks((prev) => prev.filter((task) => task.id !== taskIdToRemove));
 
         if (amountOfDoneTasks < 1) {
@@ -61,32 +59,45 @@ const MainPage = () => {
             return task;
         })
         setAllTasks(checkedTask);
-
-
     };
 
 
+    const [edit, setEdit] = useState(null);
+    const [value, setValue] = useState('');
+
+    const editTask = (id, title) => {
+        setEdit(id);
+        setValue(title);
+    };
+
+    const saveEditedTask = (id) => {
+        let changedTask = [...allTasks].map(task => {
+            if (task.id === id) {
+                task.title = value;
+            }
+            return task;
+        });
+        setAllTasks(changedTask);
+        setEdit(null);
+    };
+
     return (
         <StyledMainPage>
-            <Title title="Things to do"/>
+            <Title heading="Things to do"/>
             <Counter amountOfAllTasks={amountOfAllTasks} amountOfDoneTasks={amountOfDoneTasks}/>
             <Input type="text" placeholder="Search"/>
             <Filter/>
-            <TaskList allTasks={allTasks} handleDelete={handleDelete} checkHandler={checkHandler}
-            />
-            <Form newTask={newTask} handleSubmit={handleSubmit}
-                  handleChange={handleChange}/>
+            <TaskList allTasks={allTasks} handleDelete={handleDeleteTask} checkHandler={checkHandler}
+                      handleEdit={editTask}
+                      handleSubmit={saveEditedTask}
+                      handleChange={setValue} value={value} edit={edit}/>
+            <Form value={newTask.title || ""} handleSubmit={handleSubmitNewTask}
+                  handleChange={handleAddTask} text="Add" placeholder="Add new task"/>
         </StyledMainPage>
     );
 };
 
 export default MainPage;
-
-MainPage.propTypes = {
-    children: PropTypes.node,
-    text: PropTypes.string,
-    onClick: PropTypes.func.isRequired
-}
 
 
 const StyledMainPage = styled.div`

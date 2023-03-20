@@ -7,7 +7,6 @@ const Button = ({handleClick, text, children, type, isPrimary}) => (
     <StyledButton onClick={handleClick} type={type} primary={isPrimary}>{children || text}</StyledButton>
 );
 
-
 export default Button;
 
 
@@ -17,13 +16,13 @@ Button.propTypes = {
     handleClick: PropTypes.func.isRequired,
     type: PropTypes.string.isRequired,
     isPrimary: PropTypes.bool
-}
+};
 
 Button.defaultProps = {
     text: "",
     isPrimary: false,
     handleClick: null
-}
+};
 
 
 const StyledButton = styled.button`
@@ -41,7 +40,6 @@ const StyledButton = styled.button`
     border: 1px solid white;
     cursor: pointer;
   }
-
 
   :active {
     transform: scale(1.2);

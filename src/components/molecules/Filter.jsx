@@ -11,13 +11,12 @@ const Filter = ({handleClick}) => (
     </StyledFilterContainer>
 );
 
-
 export default Filter;
 
 
 Filter.propTypes = {
     handleClick: PropTypes.func.isRequired
-}
+};
 
 
 const StyledFilterContainer = styled.div`

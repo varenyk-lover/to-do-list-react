@@ -7,7 +7,6 @@ const Input = ({handleChange, placeholder, value, type, name}) => (
     <StyledInput type={type} onChange={handleChange} value={value} name={name} placeholder={placeholder}/>
 );
 
-
 export default Input;
 
 
@@ -15,14 +14,15 @@ Input.propTypes = {
     type: PropTypes.string.isRequired,
     handleChange: PropTypes.func.isRequired,
     value: PropTypes.string.isRequired,
-    placeholder: PropTypes.string.isRequired,
+    placeholder: PropTypes.string,
     name: PropTypes.string.isRequired,
-}
+};
 
 Input.defaultProps = {
     value: "",
     name: "",
-}
+};
+
 
 const StyledInput = styled.input`
   background: ${({bgColor}) => bgColor || "#45454C"};
@@ -56,11 +56,12 @@ const StyledInput = styled.input`
   }
 
   @media only screen and (max-width: 1200px) {
-    font-size: 15px;
+    font-size: 20px;
     padding: 5px 0;
   }
 
   @media only screen and (max-width: 480px) {
+    font-size: 15px;
     margin: 0;
   }
 `;

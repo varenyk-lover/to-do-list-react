@@ -14,7 +14,7 @@ export default Counter;
 Counter.propTypes = {
     amountOfAllTasks: PropTypes.number.isRequired,
     amountOfDoneTasks: PropTypes.number.isRequired,
-}
+};
 
 
 const StyledCounter = styled.p`
@@ -25,6 +25,11 @@ const StyledCounter = styled.p`
   text-align: center;
 
   @media only screen and (max-width: 1200px) {
+    font-size: 20px;
+  }
+
+  @media only screen and (max-width: 480px) {
     font-size: 18px;
+
   }
 `;

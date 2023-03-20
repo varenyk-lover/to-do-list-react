@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from "prop-types";
 
+
 const Checkbox = ({checkHandler, isChecked, value}) => (
     <CheckboxContainer>
         <HiddenCheckbox type="checkbox" value={value} onChange={checkHandler} checked={isChecked}/>
@@ -16,11 +17,13 @@ const Checkbox = ({checkHandler, isChecked, value}) => (
 
 export default Checkbox;
 
+
 Checkbox.propTypes = {
     isChecked: PropTypes.bool.isRequired,
     checkHandler: PropTypes.func.isRequired,
     value: PropTypes.string.isRequired,
 };
+
 
 const CheckboxContainer = styled.div`
   display: inline-block;
@@ -58,13 +61,17 @@ const StyledCheckbox = styled.div`
   box-shadow: 0 0 0 1px white;
   transition: all 150ms;
 
-
   :hover {
     cursor: pointer;
   }
 
   ${Icon} {
     visibility: ${({checked}) => checked ? 'visible' : 'hidden'};
+  }
+
+  @media only screen and (max-width: 360px) {
+    width: 13px;
+    height: 13px;
   }
 `;
 
