@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState} from "react";
 import styled from "styled-components";
 import Input from "../atoms/Input";
 import Counter from "../atoms/Counter";
@@ -8,8 +8,20 @@ import Form from "../molecules/Form";
 import TaskList from "../organisms/TaskList";
 
 const MainPage = () => {
-
     const [newTask, setNewTask] = useState({});
+    const [allTasks, setAllTasks] = useState([]);
+    const [amountOfAllTasks, setAmountOfAllTasks] = useState(0);
+    const [amountOfDoneTasks, setAmountOfDoneTasks] = useState(0);
+    const [edit, setEdit] = useState(null);
+    const [value, setValue] = useState('');
+    const [renderSearch, setRenderSearch] = useState([]);
+    const [search, setSearch] = useState('');
+
+
+    useEffect(() => {
+        setAmountOfAllTasks(allTasks.length);
+    }, [allTasks]);
+
     const handleAddTask = ({target}) => {
         const {name, value} = target;
         setNewTask((prev) => ({
@@ -20,19 +32,17 @@ const MainPage = () => {
         }));
     };
 
-    const [allTasks, setAllTasks] = useState([]);
-    const [amountOfAllTasks, setAmountOfAllTasks] = useState(0);
-    const [amountOfDoneTasks, setAmountOfDoneTasks] = useState(0);
-
     const handleSubmitNewTask = (event) => {
         event.preventDefault();
         if (!newTask.title) return;
         setAllTasks((prev) => [newTask, ...prev]);
         setNewTask({});
+        setRenderSearch((prev) => [newTask, ...prev]);
     };
 
     const handleDeleteTask = (taskIdToRemove) => {
         setAllTasks((prev) => prev.filter((task) => task.id !== taskIdToRemove));
+        setRenderSearch((prev) => prev.filter((task) => task.id !== taskIdToRemove));
 
         if (amountOfDoneTasks < 1) {
             setAmountOfDoneTasks(0);
@@ -40,11 +50,6 @@ const MainPage = () => {
             setAmountOfDoneTasks(amountOfDoneTasks - 1);
         }
     };
-
-
-    useEffect(() => {
-        setAmountOfAllTasks(allTasks.length);
-    }, [allTasks]);
 
     const checkHandler = (id) => {
         let checkedTask = [...allTasks].filter(task => {
@@ -60,10 +65,6 @@ const MainPage = () => {
         })
         setAllTasks(checkedTask);
     };
-
-
-    const [edit, setEdit] = useState(null);
-    const [value, setValue] = useState('');
 
     const editTask = (id, title) => {
         setEdit(id);
@@ -81,16 +82,28 @@ const MainPage = () => {
         setEdit(null);
     };
 
+    const handleSearchTask = (event) => {
+        setSearch(event.target.value);
+
+        const searchedTasks = allTasks.filter((task) => {
+            return task.title.toLowerCase().includes(event.target.value.toLowerCase());
+        });
+
+        setRenderSearch(searchedTasks);
+    };
+
+
     return (
         <StyledMainPage>
             <Title heading="Things to do"/>
             <Counter amountOfAllTasks={amountOfAllTasks} amountOfDoneTasks={amountOfDoneTasks}/>
-            <Input type="text" placeholder="Search"/>
+            <Input type="text" placeholder="Search" handleChange={handleSearchTask} value={search} name="search"/>
             <Filter/>
             <TaskList allTasks={allTasks} handleDelete={handleDeleteTask} checkHandler={checkHandler}
                       handleEdit={editTask}
                       handleSubmit={saveEditedTask}
-                      handleChange={setValue} value={value} edit={edit}/>
+                      handleChange={setValue} value={value} edit={edit} search={search}
+                      renderSearch={renderSearch}/>
             <Form value={newTask.title || ""} handleSubmit={handleSubmitNewTask}
                   handleChange={handleAddTask} text="Add" placeholder="Add new task"/>
         </StyledMainPage>
@@ -101,6 +114,7 @@ export default MainPage;
 
 
 const StyledMainPage = styled.div`
+
   position: absolute;
   top: 50%;
   left: 50%;

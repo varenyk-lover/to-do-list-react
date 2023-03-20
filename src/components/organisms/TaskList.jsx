@@ -4,9 +4,35 @@ import styled from "styled-components";
 import TaskItem from "../molecules/TaskItem";
 import Form from "../molecules/Form";
 
-const TaskList = ({handleSubmit, handleChange, edit, value, handleEdit, handleDelete, checkHandler, allTasks}) => (
+const TaskList = ({
+                      handleSubmit,
+                      handleChange,
+                      edit,
+                      value,
+                      handleEdit,
+                      handleDelete,
+                      checkHandler,
+                      allTasks,
+                      search,
+                      renderSearch
+                  }) => (
     <StyledTaskList>
-        {
+        {search ? renderSearch.map(({title, id, checked}) => (
+                <div key={id} style={{backgroundColor: "transparent"}}>
+                    {
+                        edit === id ?
+                            <Form handleSubmit={() => handleSubmit(id)} text="Save"
+                                  handleChange={(event) => handleChange(event.target.value)} value={value}
+                            />
+                            :
+                            <TaskItem taskName={title} handleEdit={() => handleEdit(id, title)}
+                                      handleDelete={() => handleDelete(id)}
+                                      checkHandler={() => checkHandler(id)} isChecked={checked}/>
+                    }
+                </div>
+
+            ))
+            :
             allTasks.map(({title, id, checked}) => (
                 <div key={id} style={{backgroundColor: "transparent"}}>
                     {
