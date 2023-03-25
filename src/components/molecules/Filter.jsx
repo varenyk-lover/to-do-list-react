@@ -3,11 +3,11 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import Button from "../atoms/Button";
 
-const Filter = ({handleClick}) => (
+const Filter = ({handleAllTasks, handleActiveTasks, handleDoneTasks}) => (
     <StyledFilterContainer>
-        <Button isPrimary type="button" handleClick={handleClick} text="All"/>
-        <Button isPrimary type="button" handleClick={handleClick} text="Active"/>
-        <Button isPrimary type="button" handleClick={handleClick} text="Done"/>
+        <Button isPrimary type="button" handleClick={handleAllTasks} text="All"/>
+        <Button isPrimary type="button" handleClick={handleActiveTasks} text="Active"/>
+        <Button isPrimary type="button" handleClick={handleDoneTasks} text="Done"/>
     </StyledFilterContainer>
 );
 
@@ -15,7 +15,9 @@ export default Filter;
 
 
 Filter.propTypes = {
-    handleClick: PropTypes.func.isRequired
+    handleAllTasks: PropTypes.func.isRequired,
+    handleActiveTasks: PropTypes.func.isRequired,
+    handleDoneTasks: PropTypes.func.isRequired,
 };
 
 
