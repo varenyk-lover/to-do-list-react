@@ -16,11 +16,12 @@ const MainPage = () => {
     const [value, setValue] = useState('');
     const [renderSearch, setRenderSearch] = useState([]);
     const [search, setSearch] = useState('');
-
+    const [filter, setFilter] = useState(allTasks);
 
     useEffect(() => {
         setAmountOfAllTasks(allTasks.length);
     }, [allTasks]);
+
 
     const handleAddTask = ({target}) => {
         const {name, value} = target;
@@ -38,11 +39,13 @@ const MainPage = () => {
         setAllTasks((prev) => [newTask, ...prev]);
         setNewTask({});
         setRenderSearch((prev) => [newTask, ...prev]);
+        setFilter((prev) => [newTask, ...prev]);
     };
 
     const handleDeleteTask = (taskIdToRemove) => {
         setAllTasks((prev) => prev.filter((task) => task.id !== taskIdToRemove));
         setRenderSearch((prev) => prev.filter((task) => task.id !== taskIdToRemove));
+        setFilter((prev) => prev.filter((task) => task.id !== taskIdToRemove));
 
         if (amountOfDoneTasks < 1) {
             setAmountOfDoneTasks(0);
@@ -55,6 +58,7 @@ const MainPage = () => {
         let checkedTask = [...allTasks].filter(task => {
             if (task.id === id) {
                 task.checked = !task.checked;
+
                 if (task.checked === true) {
                     setAmountOfDoneTasks(amountOfDoneTasks + 1);
                 } else if (task.checked === false) {
@@ -90,16 +94,31 @@ const MainPage = () => {
         });
 
         setRenderSearch(searchedTasks);
+
     };
 
+    const handleFilteredTasks = (checked) => {
+        if (checked === 'all') {
+            setFilter(allTasks);
+            setRenderSearch(allTasks);
+        } else {
+            let filteredTasks = [...allTasks].filter(task => task.checked === checked);
+            setFilter(filteredTasks);
+            setRenderSearch(filteredTasks);
+        }
+    };
 
     return (
+
         <StyledMainPage>
             <Title heading="Things to do"/>
             <Counter amountOfAllTasks={amountOfAllTasks} amountOfDoneTasks={amountOfDoneTasks}/>
             <Input type="text" placeholder="Search" handleChange={handleSearchTask} value={search} name="search"/>
-            <Filter/>
-            <TaskList allTasks={allTasks} handleDelete={handleDeleteTask} checkHandler={checkHandler}
+            <Filter handleAllTasks={() => handleFilteredTasks('all')}
+                    handleActiveTasks={() => handleFilteredTasks(false)}
+                    handleDoneTasks={() => handleFilteredTasks(true)}/>
+            <TaskList filter={filter} handleDelete={handleDeleteTask}
+                      checkHandler={checkHandler}
                       handleEdit={editTask}
                       handleSubmit={saveEditedTask}
                       handleChange={setValue} value={value} edit={edit} search={search}
@@ -107,6 +126,7 @@ const MainPage = () => {
             <Form value={newTask.title || ""} handleSubmit={handleSubmitNewTask}
                   handleChange={handleAddTask} text="Add" placeholder="Add new task"/>
         </StyledMainPage>
+
     );
 };
 
@@ -114,7 +134,6 @@ export default MainPage;
 
 
 const StyledMainPage = styled.div`
-
   position: absolute;
   top: 50%;
   left: 50%;
