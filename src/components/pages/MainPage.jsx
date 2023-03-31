@@ -6,6 +6,7 @@ import Title from "../atoms/Title";
 import Filter from "../molecules/Filter";
 import Form from "../molecules/Form";
 import TaskList from "../organisms/TaskList";
+import ThemeToggler from "../molecules/ThemeToggler";
 
 const MainPage = () => {
     const [newTask, setNewTask] = useState({});
@@ -111,6 +112,7 @@ const MainPage = () => {
     return (
 
         <StyledMainPage>
+            <ThemeToggler/>
             <Title heading="Things to do"/>
             <Counter amountOfAllTasks={amountOfAllTasks} amountOfDoneTasks={amountOfDoneTasks}/>
             <Input type="text" placeholder="Search" handleChange={handleSearchTask} value={search} name="search"/>
@@ -144,6 +146,7 @@ const StyledMainPage = styled.div`
   flex-direction: column;
   padding: 40px;
   background-color: #262631;
+    //background-color: ${({checked}) => checked ? '#262631' : 'white'};
   border-radius: 15px;
   box-shadow: 0 12px 17px 2px hsla(0, 0%, 0%, 0.14),
   0 5px 22px 4px hsla(0, 0%, 0%, 0.12),

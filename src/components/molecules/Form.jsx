@@ -26,7 +26,7 @@ Form.propTypes = {
 
 
 const StyledForm = styled.form`
-  background: ${({bgColor}) => bgColor || "#262631"};
+  background: transparent;
   display: flex;
 
 
