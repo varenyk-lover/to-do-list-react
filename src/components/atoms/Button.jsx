@@ -24,20 +24,21 @@ Button.defaultProps = {
     handleClick: null
 };
 
-
 const StyledButton = styled.button`
-  background: ${({primary}) => primary ? "#45454C" : "transparent"};
-  color: white;
+  background: ${({primary, theme}) => primary ? theme.secondaryBgColor : "transparent"};
+  color: ${({theme}) => theme.titleColor};
   font-size: ${({primary}) => primary ? "25px" : "20px"};
   margin: ${({primary}) => primary ? "10px" : "0"};
   padding: ${({primary}) => primary ? "5px 15px" : "3px 7px 0 7px"};
   border-radius: 10px;
-  border: ${({primary}) => primary ? "1px solid #45454C" : "1px solid transparent"};;
+  border: ${({primary}) => primary ? "1px solid" : "1px solid"};
+  border-color: ${({primary, theme}) => primary ? theme.secondaryBgColor : "transparent"};
 
   :hover {
-    background: ${({primary}) => primary ? "white" : "transparent"};
-    color: #262631;
-    border: 1px solid white;
+    background: ${({primary, theme}) => primary ? theme.titleColor : "transparent"};
+    color: ${({theme}) => theme.mainBgColor};
+    border: 1px solid;
+    border-color: ${({theme}) => theme.titleColor};
     cursor: pointer;
   }
 

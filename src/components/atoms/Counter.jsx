@@ -20,7 +20,7 @@ Counter.propTypes = {
 const StyledCounter = styled.p`
   padding: 15px 0 15px 0;
   background: transparent;
-  color: #919191;
+  color: ${({theme}) => theme.subtitleColor};
   font-size: 23px;
   text-align: center;
 

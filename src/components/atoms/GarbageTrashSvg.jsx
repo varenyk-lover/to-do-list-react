@@ -13,7 +13,7 @@ export default GarbageTrashSvg;
 const StyledIconGarbageTrash = styled(GarbageTrashIcon)`
   width: 16px;
   height: 16px;
-  fill: ${({color}) => color || "white"};
+  fill: ${({theme}) => theme.titleColor};
   background-color: transparent;
 
   :hover {

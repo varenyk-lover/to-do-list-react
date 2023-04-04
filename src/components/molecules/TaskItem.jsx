@@ -49,7 +49,7 @@ const StyledTaskItem = styled.div`
 
 const StyledLabel = styled.label`
   background: transparent;
-  color: white;
+  color: ${({theme}) => theme.titleColor};
   padding-top: 14px;
 `;
 

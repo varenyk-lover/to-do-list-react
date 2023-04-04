@@ -25,8 +25,8 @@ Input.defaultProps = {
 
 
 const StyledInput = styled.input`
-  background: ${({bgColor}) => bgColor || "#45454C"};
-  color: white;
+  background-color: ${({theme}) => theme.secondaryBgColor};
+  color: ${({theme}) => theme.titleColor};
   font-size: 25px;
   margin: 10px;
   padding: 5px 15px;
@@ -38,17 +38,18 @@ const StyledInput = styled.input`
 
   ::placeholder {
     text-align: center;
+    color: ${({theme}) => theme.subtitleColor};
   }
 
 
   :focus {
     outline: 0;
     outline-offset: 0;
-    border-color: white;
+    border-color: ${({theme}) => theme.titleColor};
   }
 
   :hover {
-    border-color: white;
+    border-color: ${({theme}) => theme.titleColor};
   }
 
   ::-webkit-search-cancel-button {

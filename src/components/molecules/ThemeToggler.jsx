@@ -4,10 +4,10 @@ import styled from "styled-components";
 import MoonSvg from "../atoms/MoonSvg";
 import SunSvg from "../atoms/SunSvg";
 
-const ThemeToggler = ({toggleHandler, isChecked}) => (
+const ThemeToggler = ({toggleTheme, isChecked}) => (
     <StyledTogglerContainer>
         <StyledToggler>
-            <HiddenCheckbox type="checkbox" onChange={toggleHandler} checked={isChecked} name="toggler"/>
+            <HiddenCheckbox type="checkbox" onChange={toggleTheme} checked={isChecked} name="toggler"/>
 
             <StyledLabel>
                 <StyledBox>
@@ -15,8 +15,9 @@ const ThemeToggler = ({toggleHandler, isChecked}) => (
                     <StyledBall/>
 
                     <StyledScenary>
-                        <MoonSvg/>
+
                         <SunSvg/>
+                        <MoonSvg/>
                     </StyledScenary>
 
                 </StyledBox>
@@ -29,7 +30,7 @@ export default ThemeToggler;
 
 
 ThemeToggler.propTypes = {
-    toggleHandler: PropTypes.func.isRequired,
+    toggleTheme: PropTypes.func.isRequired,
     isChecked: PropTypes.bool.isRequired
 };
 
@@ -60,18 +61,25 @@ const StyledBox = styled.div`
   justify-content: center;
   width: 120px;
   height: 60px;
-  background-color: ${({checked}) => checked ? 'white' : '#45454C'};
+  background-color: ${({theme}) => theme.titleColor};
   transition: all 1s ease;
   position: relative;
   border-radius: 30px;
   cursor: pointer;
+
+  :hover {
+    //background-color: white;
+    cursor: pointer;
+    //transition-delay: 0s;
+    //transition-property: none;
+  }
 `;
 
 
 const StyledBall = styled.div`
   width: 60px;
   height: 60px;
-  background-color: #919191;;
+  background-color: #919191;
   transition: all 1s ease;
   position: absolute;
   border-radius: 50%;

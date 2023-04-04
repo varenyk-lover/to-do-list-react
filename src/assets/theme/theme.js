@@ -1,12 +1,14 @@
-const darkTheme = {
-    buttonBackground: "#45454C",
-    buttonHoverBackground: "white",
-    checkboxBackground: "white",
-    togglerBackground: "white",
+export const darkTheme = {
+    mainBgColor: "#262631",
+    secondaryBgColor: "#45454C",
+    titleColor: "white",
+    subtitleColor: "#919191",
 };
 
-lightTheme = {
-    buttonColor: "#45454C",
-    buttonHoverColor: "grey",
-    togglerBackground: "black",
+
+export const lightTheme = {
+    mainBgColor: "white",
+    secondaryBgColor: "#919191",
+    titleColor: "#262631",
+    subtitleColor: "#45454C",
 };

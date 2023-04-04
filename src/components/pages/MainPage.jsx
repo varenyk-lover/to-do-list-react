@@ -19,6 +19,7 @@ const MainPage = () => {
     const [search, setSearch] = useState('');
     const [filter, setFilter] = useState(allTasks);
 
+
     useEffect(() => {
         setAmountOfAllTasks(allTasks.length);
     }, [allTasks]);
@@ -145,8 +146,7 @@ const StyledMainPage = styled.div`
   align-items: center;
   flex-direction: column;
   padding: 40px;
-  background-color: #262631;
-    //background-color: ${({checked}) => checked ? '#262631' : 'white'};
+  background-color: ${({theme}) => theme.mainBgColor};
   border-radius: 15px;
   box-shadow: 0 12px 17px 2px hsla(0, 0%, 0%, 0.14),
   0 5px 22px 4px hsla(0, 0%, 0%, 0.12),
