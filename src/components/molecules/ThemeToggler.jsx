@@ -4,34 +4,40 @@ import styled from "styled-components";
 import MoonSvg from "../atoms/MoonSvg";
 import SunSvg from "../atoms/SunSvg";
 
-const ThemeToggler = ({toggleTheme, isChecked}) => (
-    <StyledTogglerContainer>
-        <StyledToggler>
-            <HiddenCheckbox type="checkbox" onChange={toggleTheme} checked={isChecked} name="toggler"/>
+const ThemeToggler = ({handleToggler, isToggled, toggleTheme}) => {
 
-            <StyledLabel>
-                <StyledBox>
+    return (
+        <StyledTogglerContainer>
+            <StyledToggler>
+                <HiddenCheckbox id="check" type="checkbox" toggleTheme={toggleTheme} onChange={handleToggler}
+                                checked={isToggled}
+                                name="toggler"/>
 
-                    <StyledBall/>
+                <label htmlFor="check">
+                    <StyledBox>
 
-                    <StyledScenary>
+                        <StyledBall checked={isToggled}/>
 
-                        <SunSvg/>
-                        <MoonSvg/>
-                    </StyledScenary>
+                        <StyledScenary>
 
-                </StyledBox>
-            </StyledLabel>
-        </StyledToggler>
-    </StyledTogglerContainer>
-);
+                            <SunSvg/>
+                            <MoonSvg/>
+                        </StyledScenary>
+
+                    </StyledBox>
+                </label>
+            </StyledToggler>
+        </StyledTogglerContainer>
+    );
+};
 
 export default ThemeToggler;
 
 
 ThemeToggler.propTypes = {
+    handleToggler: PropTypes.func.isRequired,
     toggleTheme: PropTypes.func.isRequired,
-    isChecked: PropTypes.bool.isRequired
+    isToggled: PropTypes.bool.isRequired
 };
 
 const StyledTogglerContainer = styled.div`
@@ -50,10 +56,6 @@ const HiddenCheckbox = styled.input`
   display: none;
 `;
 
-
-const StyledLabel = styled.label`
-
-`;
 
 const StyledBox = styled.div`
   display: flex;
@@ -84,7 +86,7 @@ const StyledBall = styled.div`
   position: absolute;
   border-radius: 50%;
   //border: 3px solid black;
-  transform: ${({checked}) => checked ? 'translatex(100%);' : 'translatex(0%);'};
+  transform: ${({checked}) => checked ? "translateX(0%);" : "translateX(100%);"};
 `;
 
 const StyledScenary = styled.div`

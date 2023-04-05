@@ -7,6 +7,8 @@ import Filter from "../molecules/Filter";
 import Form from "../molecules/Form";
 import TaskList from "../organisms/TaskList";
 import ThemeToggler from "../molecules/ThemeToggler";
+import {ThemeProvider} from "styled-components";
+import {darkTheme, lightTheme} from "../../assets/theme/theme";
 
 const MainPage = () => {
     const [newTask, setNewTask] = useState({});
@@ -14,10 +16,26 @@ const MainPage = () => {
     const [amountOfAllTasks, setAmountOfAllTasks] = useState(0);
     const [amountOfDoneTasks, setAmountOfDoneTasks] = useState(0);
     const [edit, setEdit] = useState(null);
-    const [value, setValue] = useState('');
+    const [value, setValue] = useState("");
     const [renderSearch, setRenderSearch] = useState([]);
-    const [search, setSearch] = useState('');
+    const [search, setSearch] = useState("");
     const [filter, setFilter] = useState(allTasks);
+
+
+    const [theme, setTheme] = useState("light");
+
+    const isDarkTheme = theme === "dark";
+    const [isToggled, setIsToggled] = useState(isDarkTheme);
+    const toggleTheme = () => {
+        setTheme(isDarkTheme ? "light" : "dark")
+    };
+
+
+    const handleToggler = () => {
+        setIsToggled(!isToggled);
+        console.log("toggled");
+        toggleTheme();
+    };
 
 
     useEffect(() => {
@@ -100,7 +118,7 @@ const MainPage = () => {
     };
 
     const handleFilteredTasks = (checked) => {
-        if (checked === 'all') {
+        if (checked === "all") {
             setFilter(allTasks);
             setRenderSearch(allTasks);
         } else {
@@ -110,26 +128,27 @@ const MainPage = () => {
         }
     };
 
+
     return (
-
-        <StyledMainPage>
-            <ThemeToggler/>
-            <Title heading="Things to do"/>
-            <Counter amountOfAllTasks={amountOfAllTasks} amountOfDoneTasks={amountOfDoneTasks}/>
-            <Input type="text" placeholder="Search" handleChange={handleSearchTask} value={search} name="search"/>
-            <Filter handleAllTasks={() => handleFilteredTasks('all')}
-                    handleActiveTasks={() => handleFilteredTasks(false)}
-                    handleDoneTasks={() => handleFilteredTasks(true)}/>
-            <TaskList filter={filter} handleDelete={handleDeleteTask}
-                      checkHandler={checkHandler}
-                      handleEdit={editTask}
-                      handleSubmit={saveEditedTask}
-                      handleChange={setValue} value={value} edit={edit} search={search}
-                      renderSearch={renderSearch}/>
-            <Form value={newTask.title || ""} handleSubmit={handleSubmitNewTask}
-                  handleChange={handleAddTask} text="Add" placeholder="Add new task"/>
-        </StyledMainPage>
-
+        <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
+            <StyledMainPage>
+                <ThemeToggler toggleTheme={toggleTheme} handleToggler={handleToggler} isToggled={isToggled}/>
+                <Title heading="Things to do"/>
+                <Counter amountOfAllTasks={amountOfAllTasks} amountOfDoneTasks={amountOfDoneTasks}/>
+                <Input type="text" placeholder="Search" handleChange={handleSearchTask} value={search} name="search"/>
+                <Filter handleAllTasks={() => handleFilteredTasks("all")}
+                        handleActiveTasks={() => handleFilteredTasks(false)}
+                        handleDoneTasks={() => handleFilteredTasks(true)}/>
+                <TaskList filter={filter} handleDelete={handleDeleteTask}
+                          checkHandler={checkHandler}
+                          handleEdit={editTask}
+                          handleSubmit={saveEditedTask}
+                          handleChange={setValue} value={value} edit={edit} search={search}
+                          renderSearch={renderSearch}/>
+                <Form value={newTask.title || ""} handleSubmit={handleSubmitNewTask}
+                      handleChange={handleAddTask} text="Add" placeholder="Add new task"/>
+            </StyledMainPage>
+        </ThemeProvider>
     );
 };
 
@@ -147,6 +166,7 @@ const StyledMainPage = styled.div`
   flex-direction: column;
   padding: 40px;
   background-color: ${({theme}) => theme.mainBgColor};
+  transition: all 1s ease;
   border-radius: 15px;
   box-shadow: 0 12px 17px 2px hsla(0, 0%, 0%, 0.14),
   0 5px 22px 4px hsla(0, 0%, 0%, 0.12),
