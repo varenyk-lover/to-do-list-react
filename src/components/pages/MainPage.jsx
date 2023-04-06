@@ -33,7 +33,6 @@ const MainPage = () => {
 
     const handleToggler = () => {
         setIsToggled(!isToggled);
-        console.log("toggled");
         toggleTheme();
     };
 

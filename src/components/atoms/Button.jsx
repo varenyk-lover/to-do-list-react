@@ -13,7 +13,7 @@ export default Button;
 Button.propTypes = {
     children: PropTypes.node,
     text: PropTypes.string,
-    handleClick: PropTypes.func.isRequired,
+    handleClick: PropTypes.func,
     type: PropTypes.string.isRequired,
     isPrimary: PropTypes.bool
 };
