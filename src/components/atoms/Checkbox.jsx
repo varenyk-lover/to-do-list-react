@@ -33,32 +33,39 @@ const CheckboxContainer = styled.div`
 
 const Icon = styled.svg`
   fill: none;
-  stroke: black;
+  stroke: ${({theme}) => theme.mainBgColor};
   stroke-width: 2px;
-  background: white;
+  background-color: ${({theme}) => theme.titleColor};
   border-radius: 4px;
+  //border: 1px solid;
+  width: 16px;
+  height: 16px;
+  margin-left: -1px;
+  margin-top: -1px;
 `;
 // Hide checkbox visually but remain accessible to screen readers.
 const HiddenCheckbox = styled.input`
-  border: 0;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
+  //border: 0;
+  //clip: rect(0 0 0 0);
+  //height: 1px;
+
+  //overflow: hidden;
+  //padding: 0;
+  //position: absolute;
+  //white-space: nowrap;
+  ////width: 1px;
   display: none;
 `;
+
 
 const StyledCheckbox = styled.div`
   display: inline-block;
   width: 16px;
   height: 16px;
-  background: ${({checked}) => checked ? 'white' : 'transparent'};
+  background: transparent;
   border-radius: 4px;
-  box-shadow: 0 0 0 1px white;
+  border: 1px solid;
+  border-color: ${({theme}) => theme.titleColor};
   transition: all 150ms;
 
   :hover {

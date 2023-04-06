@@ -1,11 +1,17 @@
-import React from 'react';
+import React from "react";
 import MainPage from "./components/pages/MainPage";
+import GlobalStyle from "./GlobalStyle";
 
-const App = () => (
-    <>
-        <MainPage/>
-    </>
-);
+const App = () => {
+
+    return (
+        <>
+            <GlobalStyle/>
+            <MainPage/>
+        </>
+    )
+        ;
+};
 
 
 export default App;

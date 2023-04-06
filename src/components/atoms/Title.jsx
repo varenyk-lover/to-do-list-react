@@ -17,7 +17,7 @@ Title.propTypes = {
 
 const StyledTitle = styled.h1`
   background: transparent;
-  color: white;
+  color: ${({theme}) => theme.titleColor};
   text-align: center;
   font-size: 40px;
 

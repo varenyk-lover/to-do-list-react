@@ -13,7 +13,7 @@ export default PenSvg;
 const StyledIconPen = styled(PenIcon)`
   width: 16px;
   height: 16px;
-  fill: white;
+  fill: ${({theme}) => theme.titleColor};
   background-color: transparent;
 `;
 
