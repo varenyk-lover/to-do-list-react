@@ -20,16 +20,13 @@ const MainPage = () => {
     const [renderSearch, setRenderSearch] = useState([]);
     const [search, setSearch] = useState("");
     const [filter, setFilter] = useState(allTasks);
-
-
-    const [theme, setTheme] = useState("light");
-
+    const [theme, setTheme] = useState("dark");
     const isDarkTheme = theme === "dark";
     const [isToggled, setIsToggled] = useState(isDarkTheme);
+
     const toggleTheme = () => {
         setTheme(isDarkTheme ? "light" : "dark")
     };
-
 
     const handleToggler = () => {
         setIsToggled(!isToggled);
@@ -62,15 +59,21 @@ const MainPage = () => {
     };
 
     const handleDeleteTask = (taskIdToRemove) => {
-        setAllTasks((prev) => prev.filter((task) => task.id !== taskIdToRemove));
+        setAllTasks((prev) => prev.filter((task) => {
+            if (task.id === taskIdToRemove) {
+
+                if (task.checked === true) {
+                    setAmountOfDoneTasks(amountOfDoneTasks - 1);
+                    setAmountOfAllTasks(amountOfAllTasks - 1);
+                } else if (task.checked === false) {
+                    setAmountOfAllTasks(amountOfAllTasks - 1);
+                }
+            }
+            return task.id !== taskIdToRemove;
+        }));
         setRenderSearch((prev) => prev.filter((task) => task.id !== taskIdToRemove));
         setFilter((prev) => prev.filter((task) => task.id !== taskIdToRemove));
 
-        if (amountOfDoneTasks < 1) {
-            setAmountOfDoneTasks(0);
-        } else {
-            setAmountOfDoneTasks(amountOfDoneTasks - 1);
-        }
     };
 
     const checkHandler = (id) => {
@@ -85,7 +88,7 @@ const MainPage = () => {
                 }
             }
             return task;
-        })
+        });
         setAllTasks(checkedTask);
     };
 
