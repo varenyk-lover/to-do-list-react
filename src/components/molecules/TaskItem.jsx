@@ -76,6 +76,7 @@ const StyledBtnContainer = styled.div`
   justify-content: space-between;
   background-color: transparent;
   margin-top: 6px;
+  padding-right: 5px;
   min-width: 70px;
   height: 30px;
 `;
