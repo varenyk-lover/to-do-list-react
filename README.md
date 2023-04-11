@@ -1,3 +1,19 @@
+This is my to-do list app —  https://todo-list-hanna.netlify.app/
+
+Technologies: React, styled-components, prop-types.
+
+Features:
+1. Theme toggler that was created with styled-components library.
+2. Counter of active and done tasks.
+3. Search input to search the task by name. You could search the task in all to-do list by name, then check it as done in its checkbox, then click on "Done" filter button and see it there.
+4. Filter buttons — all tasks, active, done.
+5. To-do list — you will see it after creating the first task. You could check it as done, edit it or delete. You could click on "Done" filter button, uncheck a few tasks at the same time, and then see them in "Active" tasks.
+6. Input to add new tasks. You could add new task from any part of app: in "All" tasks, in "Active" tasks or in "Done". But every added new task is "Active" by default, so it has an unchecked checkbox even if the task was created in "Done" list.
+
+Github: for each task and bug were created a new branch. On the beginning of my mentorship, my mentor was checking each task. If it was ok, then I opened pull request. After it, I needed to merge branch into development.
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
