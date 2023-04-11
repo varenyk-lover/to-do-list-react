@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 
 const Counter = ({amountOfAllTasks, amountOfDoneTasks}) => (
-    <StyledCounter>{amountOfDoneTasks} from {amountOfAllTasks} done</StyledCounter>
+    <StyledCounter>{amountOfDoneTasks} of {amountOfAllTasks} done</StyledCounter>
 );
 
 

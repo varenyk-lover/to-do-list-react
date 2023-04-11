@@ -137,7 +137,8 @@ const MainPage = () => {
                 <ThemeToggler toggleTheme={toggleTheme} handleToggler={handleToggler} isToggled={isToggled}/>
                 <Title heading="Things to do"/>
                 <Counter amountOfAllTasks={amountOfAllTasks} amountOfDoneTasks={amountOfDoneTasks}/>
-                <Input type="text" placeholder="Search" handleChange={handleSearchTask} value={search} name="search"/>
+                <Input type="text" placeholder="Search task" handleChange={handleSearchTask} value={search}
+                       name="search"/>
                 <Filter handleAllTasks={() => handleFilteredTasks("all")}
                         handleActiveTasks={() => handleFilteredTasks(false)}
                         handleDoneTasks={() => handleFilteredTasks(true)}/>
@@ -148,7 +149,7 @@ const MainPage = () => {
                           handleChange={setValue} value={value} edit={edit} search={search}
                           renderSearch={renderSearch}/>
                 <Form value={newTask.title || ""} handleSubmit={handleSubmitNewTask}
-                      handleChange={handleAddTask} text="Add" placeholder="Add new task"/>
+                      handleChange={handleAddTask} text="Add" placeholder="Enter name of task"/>
             </StyledMainPage>
         </ThemeProvider>
     );
