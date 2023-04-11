@@ -1,6 +1,7 @@
 This is my to-do list app —  https://todo-list-hanna.netlify.app/
 
 Technologies: React, styled-components, prop-types.
+Responsive design.
 
 Features:
 1. Theme toggler that was created with styled-components library.
@@ -10,7 +11,7 @@ Features:
 5. To-do list — you will see it after creating the first task. You could check it as done, edit it or delete. You could click on "Done" filter button, uncheck a few tasks at the same time, and then see them in "Active" tasks.
 6. Input to add new tasks. You could add new task from any part of app: in "All" tasks, in "Active" tasks or in "Done". But every added new task is "Active" by default, so it has an unchecked checkbox even if the task was created in "Done" list.
 
-Github: for each task and bug were created a new branch. On the beginning of my mentorship, my mentor was checking each task. If it was ok, then I opened pull request. After it, I needed to merge branch into development.
+Github: for each task and bug was created a new branch. On the beginning of my mentorship, my mentor was checking each task. If it was ok, then I opened pull request. After it, I needed to merge branch into development.
 
 
 
