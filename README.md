@@ -1,7 +1,9 @@
-This is my to-do list app —  https://todo-list-hanna.netlify.app/
+# To-do list app
+Here you can watch it —  https://todo-list-hanna.netlify.app/
 
 Technologies: React, styled-components, prop-types.
-Responsive design.
+
+Design: responsive for different screen sizes.
 
 Features:
 1. Theme toggler that was created with styled-components library.
@@ -13,6 +15,7 @@ Features:
 
 Github: for each task and bug was created a new branch. On the beginning of my mentorship, my mentor was checking each task. If it was ok, then I opened pull request. After it, I needed to merge branch into development.
 
+File structure: Atomic Design methodology.
 
 
 # Getting Started with Create React App
