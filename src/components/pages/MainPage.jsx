@@ -7,10 +7,9 @@ import Filter from "../molecules/Filter";
 import Form from "../molecules/Form";
 import TaskList from "../organisms/TaskList";
 import ThemeToggler from "../molecules/ThemeToggler";
-import {ThemeProvider} from "styled-components";
-import {darkTheme, lightTheme} from "../../assets/theme/theme";
 
-const MainPage = () => {
+
+const MainPage = ({setTheme, isDarkTheme}) => {
     const [newTask, setNewTask] = useState({});
     const [allTasks, setAllTasks] = useState([]);
     const [amountOfAllTasks, setAmountOfAllTasks] = useState(0);
@@ -20,8 +19,6 @@ const MainPage = () => {
     const [renderSearch, setRenderSearch] = useState([]);
     const [search, setSearch] = useState("");
     const [filter, setFilter] = useState(allTasks);
-    const [theme, setTheme] = useState("dark");
-    const isDarkTheme = theme === "dark";
     const [isToggled, setIsToggled] = useState(isDarkTheme);
 
     const toggleTheme = () => {
@@ -132,26 +129,26 @@ const MainPage = () => {
 
 
     return (
-        <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
-            <StyledMainPage>
-                <ThemeToggler toggleTheme={toggleTheme} handleToggler={handleToggler} isToggled={isToggled}/>
-                <Title heading="Things to do"/>
-                <Counter amountOfAllTasks={amountOfAllTasks} amountOfDoneTasks={amountOfDoneTasks}/>
-                <Input type="text" placeholder="Search task" handleChange={handleSearchTask} value={search}
-                       name="search"/>
-                <Filter handleAllTasks={() => handleFilteredTasks("all")}
-                        handleActiveTasks={() => handleFilteredTasks(false)}
-                        handleDoneTasks={() => handleFilteredTasks(true)}/>
-                <TaskList filter={filter} handleDelete={handleDeleteTask}
-                          checkHandler={checkHandler}
-                          handleEdit={editTask}
-                          handleSubmit={saveEditedTask}
-                          handleChange={setValue} value={value} edit={edit} search={search}
-                          renderSearch={renderSearch}/>
-                <Form value={newTask.title || ""} handleSubmit={handleSubmitNewTask}
-                      handleChange={handleAddTask} text="Add" placeholder="Enter name of task"/>
-            </StyledMainPage>
-        </ThemeProvider>
+
+        <StyledMainPage>
+            <ThemeToggler toggleTheme={toggleTheme} handleToggler={handleToggler} isToggled={isToggled}/>
+            <Title heading="Things to do"/>
+            <Counter amountOfAllTasks={amountOfAllTasks} amountOfDoneTasks={amountOfDoneTasks}/>
+            <Input type="text" placeholder="Search task" handleChange={handleSearchTask} value={search}
+                   name="search"/>
+            <Filter handleAllTasks={() => handleFilteredTasks("all")}
+                    handleActiveTasks={() => handleFilteredTasks(false)}
+                    handleDoneTasks={() => handleFilteredTasks(true)}/>
+            <TaskList filter={filter} handleDelete={handleDeleteTask}
+                      checkHandler={checkHandler}
+                      handleEdit={editTask}
+                      handleSubmit={saveEditedTask}
+                      handleChange={setValue} value={value} edit={edit} search={search}
+                      renderSearch={renderSearch}/>
+            <Form value={newTask.title || ""} handleSubmit={handleSubmitNewTask}
+                  handleChange={handleAddTask} text="Add" placeholder="Enter name of task"/>
+        </StyledMainPage>
+
     );
 };
 
